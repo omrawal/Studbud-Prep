@@ -1,0 +1,5 @@
+string = input()
+stripped_string = string.strip()
+print(stripped_string)
+no_space_string = stripped_string.replace(' ', '')
+print(no_space_string)
