@@ -38,6 +38,34 @@ class Tree(object):
                 return
 
 
+def search(root, val):
+    while(True):
+        if(root == None):
+            return False
+        else:
+            if(root.data == val):
+                return True
+            elif(root.data < val):
+                if(root.right == None):
+                    return False
+                else:
+                    root = root.right
+            elif(root.data > val):
+                if(root.left == None):
+                    return False
+                else:
+                    root = root.left
+            else:
+                return False
+
+
+def delete(root, val):
+    if search(root, val):
+        pass
+    else:
+        return False
+
+
 def inorder_rec(root):
     if root == None:
         return
@@ -47,6 +75,24 @@ def inorder_rec(root):
         inorder_rec(root.right)
 
 
+def preorder_rec(root):
+    if(root == None):
+        return
+    else:
+        print(root.data)
+        preorder_rec(root.left)
+        preorder_rec(root.right)
+
+
+def postorder_rec(root):
+    if(root == None):
+        return
+    else:
+        postorder_rec(root.left)
+        postorder_rec(root.right)
+        print(root.data)
+
+
 tree = Tree()
 tree.insertNode(20)
 tree.insertNode(10)
@@ -54,3 +100,7 @@ tree.insertNode(30)
 tree.insertNode(5)
 tree.insertNode(40)
 inorder_rec(tree.root)
+print('Search for 5 ', search(tree.root, 5))
+print('Search for 15 ', search(tree.root, 15))
+print('Search for 50 ', search(tree.root, 50))
+print('Search for -10 ', search(tree.root, -10))
