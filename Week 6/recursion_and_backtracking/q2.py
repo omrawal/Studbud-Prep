@@ -27,12 +27,21 @@ class Stack(object):
         return ans+" "+str(self.stack)
 
 
+def add_bottom(s, val):
+    if(s.isEmpty()):
+        s.push(val)
+    else:
+        temp = s.pop()
+        add_bottom(s, val)
+        s.push(temp)
+
+
 def reverseStack(s):
     if(s.isEmpty()):
         return
     temp = s.pop()
     reverseStack(s)
-    s.push(temp)
+    add_bottom(s, temp)
 
 
 s = Stack()
